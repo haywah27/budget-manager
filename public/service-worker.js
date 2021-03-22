@@ -1,0 +1,1 @@
+console.log("We're in the service worker file!");
