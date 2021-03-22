@@ -3,24 +3,18 @@
     "name": "Money Manager",
     "icons": [
         {
-            "src": "/images/icons-128.png",
-            "type": "image/png",
-            "sizes": "128x128"
-        },
-        {
-            "src": "/images/icons-192.png",
+            "src": "./icons/icon-192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/images/icons-512.png",
+            "src": "./icons/icon-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
     ],
-    "start_url": "/index.html",
-    "background_color": "#3367D6",
+    "start_url": "./index.html",
+    "background_color": "#317EFB",
     "display": "standalone",
-    "scope": "/app/",
-    "theme_color": "#3367D6"
+    "theme_color": "#317EFB"   
 }
