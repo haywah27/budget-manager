@@ -5,7 +5,7 @@ const DATA_CACHE_NAME = "data-cache-v1";
 
 const FILES_TO_CACHE = [
   "/",
-  "/index.html",
+  "/index.js",
   "/manifest.json",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
@@ -16,7 +16,7 @@ self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
         cache.addAll(FILES_TO_CACHE);
-        console.log("Caching data.")
+        console.log("Pre-cached data successfully.")
     })
   );
   self.skipWaiting();
@@ -29,7 +29,7 @@ self.addEventListener("activate", function (event) {
       return Promise.all(
         keyList.map((key) => {
           if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
-            console.log("Cache data removed.", key);
+            console.log("Old cached data removed.", key);
             return caches.delete(key);
           }
         })
@@ -43,8 +43,7 @@ self.addEventListener("activate", function (event) {
 self.addEventListener("fetch", function (event) {
   if (event.request.url.includes("/api/")) {
     event.respondWith(
-      caches
-        .open(DATA_CACHE_NAME)
+      caches.open(DATA_CACHE_NAME)
         .then((cache) => {
           return fetch(event.request)
             .then((response) => {
